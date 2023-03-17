@@ -260,6 +260,12 @@ i[class*='van-type-'] {
     padding: 7px 14px;
 }
 
+.van-list-filter {
+    display: flex;
+    align-content: center;
+    justify-content: space-around; 
+}
+
 .van-detail-container {
     padding: 27px;
 }
@@ -270,7 +276,7 @@ i[class*='van-type-'] {
 }
 
 .van-detail-container .back-button:visited {
-    
+    color: inherit;
 }
 
 .van-detail-container .back-button span {

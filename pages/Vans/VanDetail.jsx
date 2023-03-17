@@ -1,5 +1,5 @@
-import React from "react"
-import { useParams } from "react-router-dom"
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 
 export default function VanDetail() {
     const params = useParams()
@@ -15,6 +15,7 @@ export default function VanDetail() {
         <div className="van-detail-container">
             {van ? (
                 <div className="van-detail">
+                    <Link className='back-button'>Go back</Link>
                     <img src={van.imageUrl} />
                     <i className={`van-type ${van.type} selected`}>
                         {van.type}
