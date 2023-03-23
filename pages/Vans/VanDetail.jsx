@@ -22,21 +22,25 @@ export default function VanDetail() {
         <div className="van-detail-container">
             <React.Suspense fallback={<h3>Loading van...</h3>}>
                 <Await resolve={loaderData.van}>
-                    <div className="van-detail">
-                        <Link 
-                            className='back-button'
-                            to={`..?${search}`}
-                            relative='path'
-                        >&larr; Back to {type} vans</Link>
-                        <img src={van.imageUrl} />
-                        <i className={`van-type ${van.type} selected`}>
-                            {van.type}
-                        </i>
-                        <h2>{van.name}</h2>
-                        <p className="van-price"><span>${van.price}</span>/day</p>
-                        <p>{van.description}</p>
-                        <button className="link-button">Rent this van</button>
-                    </div>
+                    {(van) => {
+                        return (
+                            <div className="van-detail">
+                                <Link 
+                                    className='back-button'
+                                    to={`..?${search}`}
+                                    relative='path'
+                                >&larr; Back to {type} vans</Link>
+                                <img src={van.imageUrl} />
+                                <i className={`van-type ${van.type} selected`}>
+                                    {van.type}
+                                </i>
+                                <h2>{van.name}</h2>
+                                <p className="van-price"><span>${van.price}</span>/day</p>
+                                <p>{van.description}</p>
+                                <button className="link-button">Rent this van</button>
+                            </div>
+                        )
+                    }}
                 </Await>
             </React.Suspense>
         </div>
