@@ -34,15 +34,17 @@ export default function Header() {
                 >
                     Vans
                 </NavLink>
-                <Link to='login' className="login-link">
-                    <img
-                        src="../assets/images/avatar-icon.png"
-                        alt='login icon'
-                        className="login-icon"
-                    />
-                </Link>
-                {localStorage.getItem('loggedIn') &&
+                {localStorage.getItem('loggedIn') === 'true' ?
                     <button onClick={logout} className="logout-button">Logout</button>
+                    : (
+                        <Link to='login' className="login-link">
+                            <img
+                                src="../assets/images/avatar-icon.png"
+                                alt='login icon'
+                                className="login-icon"
+                            />
+                        </Link>
+                    )
                 }
             </nav>
         </header>
