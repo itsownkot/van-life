@@ -9,12 +9,12 @@ import {
 import { loginUser } from "../api";
 
 export async function action({ request }) {
-   const formData = request.formData();
+   const formData = await request.formData();
    const email = formData.get('email')
    const password = formData.get('password')
 
    try {
-      const data = loginUser({ email, password });
+      const data = await loginUser({ email, password });
       localStorage('loggedIn', true);
       return data
    } catch (err) {
