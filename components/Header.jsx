@@ -7,6 +7,10 @@ export default function Header() {
         textDecoration: "underline",
         color: "#161616"
     }
+
+    function logout() {
+        localStorage.removeItem('loggedIn')
+    }
     
     return (
         <header>
@@ -30,6 +34,16 @@ export default function Header() {
                 >
                     Vans
                 </NavLink>
+                <Link to='login' className="login-link">
+                    <img
+                        src="../assets/images/avatar-icon.png"
+                        alt='login icon'
+                        className="login-icon"
+                    />
+                </Link>
+                {localStorage.getItem('loggedIn') &&
+                    <button onClick={logout} className="logout-button">Logout</button>
+                }
             </nav>
         </header>
     )
