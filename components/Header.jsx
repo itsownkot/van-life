@@ -1,9 +1,9 @@
 import React from "react"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import avatar from '../assets/images/avatar-icon.png'
 
 export default function Header() {
-    const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('loggedIn'));
+    const navigate = useNavigate();
 
     const activeStyles = {
         fontWeight: "bold",
@@ -13,7 +13,7 @@ export default function Header() {
 
     function logout() {
         localStorage.removeItem('loggedIn');
-        setLoggedIn(false);
+        navigate('/login')
     }
     
     return (
@@ -38,7 +38,7 @@ export default function Header() {
                 >
                     Vans
                 </NavLink>
-                { loggedIn ?
+                { localStorage.getItem('loggedIn') ?
                     <button onClick={logout} className="logout-button">Logout</button>
                     : (
                         <Link to='login' className="login-link">
