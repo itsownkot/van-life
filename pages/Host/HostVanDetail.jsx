@@ -8,12 +8,12 @@ import {
   useLoaderData,
   useLocation,
 } from "react-router-dom";
-import { getVans } from "../../api";
+import { getVan } from "../../api";
 import { requireAuth } from "../../requireAuth";
 
 export function loader({ params, request }) {
   requireAuth(request);
-  return defer({ van: getVans(`/api/host/vans/${params.id}`) });
+  return defer({ van: getVan(params.id) });
 }
 
 export default function HostVanDetail() {
