@@ -37,6 +37,7 @@ function Login() {
     <div className="login-container">
       {message && <h1 className="login-error">{message}</h1>}
       <h1>Sign in to your account</h1>
+      <p style={{ color: "red" }}>Email:user@test.com, password: 123</p>
       {errorMessage && <h3 className="data-error">{errorMessage}</h3>}
       <Form action="/login" method="post" className="login-from" replace>
         <input name="email" type="email" placeholder="Email address" />
