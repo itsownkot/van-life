@@ -63,25 +63,26 @@ export async function getHostVans() {
 // }
 
 export async function loginUser(creds) {
-  const usersCollection = collection(db, "users");
-  const querySnapshot = await getDocs(usersCollection);
-  const dataArr = querySnapshot.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  }));
+  const usersCollectionRef = collection(db, "users");
+  const querySnapshot = await getDocs(usersCollectionRef);
+  const users = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
 
-  const user = dataArr.find(
+  const user = users.find(
     (user) => user.email === creds.email && user.password === creds.password
   );
 
-  if (user) {
-    user.password = undefined;
-    return { user, token: "Enjoy your pizza, here's your tokens." };
+  if (!user) {
+    throw {
+      message: data.message,
+      statusText: data.statusText,
+      status: data.status,
+    };
   }
+  user.password = undefined;
 
-  throw {
-    message: "No user with those credentials found!",
-    status: 401,
+  return {
+    user,
+    token: "Enjoy your pizza, here's your tokens.",
   };
 
   // const res = await fetch("/api/login", {
@@ -98,5 +99,5 @@ export async function loginUser(creds) {
   //   };
   // }
 
-  // return data;
+  return data;
 }

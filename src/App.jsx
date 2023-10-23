@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -103,8 +102,6 @@ const router = createBrowserRouter(
   )
 );
 
-function App() {
+export default function App() {
   return <RouterProvider router={router} />;
 }
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
